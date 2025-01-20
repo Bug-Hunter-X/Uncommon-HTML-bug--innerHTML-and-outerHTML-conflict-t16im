@@ -1,0 +1,12 @@
+<p>The solution is to avoid modifying both `innerHTML` and `outerHTML` on the same element simultaneously.</p> <p>Here are some approaches to fix this problem:</p> <ol> <li>Use only `innerHTML` or `outerHTML`. Choose the method best suited to your needs. Avoid using both for the same element within the same code block.</li> <li>If you need to make changes to both the inner and outer HTML of an element, consider creating a new element and replacing the old element with the new one. This avoids the conflict that arises from modifying both properties concurrently.</li> <li>Use a more appropriate method to manipulate the DOM. For instance, consider using methods like `appendChild`, `insertBefore`, or `removeChild` for more precise control of the DOM tree.</li></ol> <pre><code>&lt;div id="myDiv"&gt;Some text&lt;/div&gt;
+&lt;script&gt;
+  //Option 1: Use only innerHTML
+  const myDiv = document.getElementById('myDiv');
+  myDiv.innerHTML = '&lt;p&gt;This is a paragraph&lt;/p&gt;';
+  //Option 2: Use only outerHTML
+  //  document.getElementById('myDiv').outerHTML = '&lt;p&gt;This is a paragraph&lt;/p&gt;';
+  //Option 3: Create a new element
+  // const newParagraph = document.createElement('p');
+  // newParagraph.textContent = 'This is a paragraph';
+  // myDiv.parentNode.replaceChild(newParagraph, myDiv);
+&lt;/script&gt;</code></pre>
